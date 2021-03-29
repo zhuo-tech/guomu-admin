@@ -1,8 +1,16 @@
 <template>
   <div class="app-container">
-    <el-button v-permission="'role.create'" type="primary" @click="handleAddRole">创建角色</el-button>
+    <el-button
+      v-permission="'role.create'"
+      type="primary"
+      @click="handleAddRole"
+    >创建角色</el-button>
 
-    <el-table :data="rolesList" style="width: 100%;margin-top:30px;" border>
+    <el-table
+      :data="rolesList"
+      style="width: 100%; margin-top: 30px"
+      border
+    >
       <el-table-column align="center" label="ID" width="220">
         <template slot-scope="scope">
           {{ scope.row._id }}
@@ -59,13 +67,22 @@
     >
       <el-form :model="role" label-width="80px" label-position="left">
         <el-form-item label="角色标识">
-          <el-input v-model="role.name" placeholder="唯一标识，为字母" />
+          <el-input
+            v-model="role.name"
+            placeholder="唯一标识，为字母"
+          />
         </el-form-item>
         <el-form-item label="角色名称">
           <el-input v-model="role.label" placeholder="角色显示名称" />
         </el-form-item>
         <el-form-item label="角色权限">
-          <el-select v-model="role.permissions" multiple placeholder="请选择角色" collapse-tags filterable>
+          <el-select
+            v-model="role.permissions"
+            multiple
+            placeholder="请选择角色"
+            collapse-tags
+            filterable
+          >
             <el-option
               v-for="item in permissions"
               :key="item.name"
@@ -83,11 +100,8 @@
           />
         </el-form-item>
       </el-form>
-      <div style="text-align:right;">
-        <el-button
-          type="info"
-          @click="dialogVisible = false"
-        >
+      <div style="text-align: right">
+        <el-button type="info" @click="dialogVisible = false">
           取消
         </el-button>
         <el-button type="primary" @click="confirmRole">确定</el-button>
@@ -125,10 +139,20 @@ export default {
   methods: {
     async getRoles() {
       const res = await db.collection('roles').get()
-      const { data: permissions } = await db.collection('permissions').get()
+      const { data: permissions } = await db
+        .collection('permissions')
+        .get()
       this.permissions = permissions
       const permsMap = array2map(permissions, 'name')
-      this.rolesList = mergeMap2ArrayByKeyArray(permsMap, res.data, 'permissions', 'full_permissions')
+      const roles = mergeMap2ArrayByKeyArray(
+        permsMap,
+        res.data,
+        'permissions',
+        'full_permissions'
+      )
+
+      this.rolesList = roles
+      console.log(roles)
     },
     handleAddRole() {
       this.role = Object.assign({}, defaultForm)
@@ -161,7 +185,7 @@ export default {
             message: '删除成功!'
           })
         })
-        .catch(err => {
+        .catch((err) => {
           console.error(err)
         })
     },
@@ -205,11 +229,11 @@ export default {
 
 <style lang="scss" scoped>
 .app-container {
-  .roles-table {
-    margin-top: 30px;
-  }
-  .permission-tree {
-    margin-bottom: 30px;
-  }
+    .roles-table {
+        margin-top: 30px;
+    }
+    .permission-tree {
+        margin-bottom: 30px;
+    }
 }
 </style>

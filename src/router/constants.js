@@ -51,6 +51,28 @@ export const constantRoutes = [
     ]
   },
   {
+    path: '/edit',
+    component: Layout,
+    children: [
+      {
+        path: 'newsEdit/:id',
+        component: () => import('@/views/news/addNews'),
+        name: '编辑'
+      }
+    ]
+  },
+  {
+    path: '/add',
+    component: Layout,
+    children: [
+      {
+        path: 'newsAdd/:id',
+        component: () => import('@/views/news/addNews'),
+        name: '新增'
+      }
+    ]
+  },
+  {
     path: '/profile',
     component: Layout,
     redirect: '/profile/index',

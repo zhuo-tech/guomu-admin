@@ -129,7 +129,24 @@ export const asyncRoutes = [
       }
     ]
   },
-
+  {
+    path: '/news',
+    component: Layout,
+    meta: {
+      title: '资讯管理', icon: 'tree-table', noCache: true
+    },
+    children: [
+      {
+        path: 'list',
+        component: () => import('@/views/news/index'),
+        name: 'NewsList',
+        meta: {
+          title: '资讯列表',
+          noCache: true
+        }
+      }
+    ]
+  },
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]

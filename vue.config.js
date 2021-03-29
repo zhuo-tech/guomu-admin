@@ -45,7 +45,14 @@ module.exports = {
         pathRewrite: {
           ['^' + process.env.VUE_APP_BASE_API]: ''
         }
-      }
+      },
+      '/public': {
+        target: `http://47.96.236.219:19010/file/`,
+        changeOrigin: true,
+        pathRewrite: {
+          '^public': ''
+        }
+      },
     },
     disableHostCheck: true
   },
