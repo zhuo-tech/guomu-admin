@@ -1,7 +1,7 @@
 import Layout from '@/layout'
 
 /* Router Modules */
-import componentsRouter from './modules/components'
+// import componentsRouter from './modules/components'
 
 /**
  * asyncRoutes
@@ -118,17 +118,17 @@ export const asyncRoutes = [
       }
     ]
   },
-  componentsRouter,
-  {
-    path: 'external-link',
-    component: Layout,
-    children: [
-      {
-        path: 'https://www.zhuo-zhuo.com',
-        meta: { title: '灼灼信息', icon: 'link' }
-      }
-    ]
-  },
+  // componentsRouter,
+  // {
+  //   path: 'external-link',
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: 'https://www.zhuo-zhuo.com',
+  //       meta: { title: '灼灼信息', icon: 'link' }
+  //     }
+  //   ]
+  // },
   {
     path: '/news',
     component: Layout,
