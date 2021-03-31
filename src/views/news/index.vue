@@ -49,7 +49,7 @@
       <el-table-column label="封面" class-name="封面" width="240">
         <template slot-scope="scope">
           <img
-            :src="scope.row.coverUrl"
+            :src="scope.row.coverIdxUrl"
             alt=""
             style="max-height: 80px; max-width: 100px"
           >

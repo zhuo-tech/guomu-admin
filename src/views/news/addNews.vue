@@ -14,7 +14,13 @@
           placeholder="请输入资讯标题"
         />
       </el-form-item>
-      <el-form-item label="资讯封面" prop="coverUrl">
+      <el-form-item label="首页资讯封面" prop="coverUrl">
+        <single-upload
+          :value="info.coverIdxUrl"
+          @input="(value) => (info.coverIdxUrl = value)"
+        />
+      </el-form-item>
+      <el-form-item label="内页封面" prop="coverUrl">
         <single-upload
           :value="info.coverUrl"
           @input="(value) => (info.coverUrl = value)"
@@ -49,7 +55,8 @@ export default {
         coverUrl: '',
         content: '',
         created_at: '',
-        updated_at: ''
+        updated_at: '',
+        coverIdxUrl: ''
       },
       rules: {
         name: [
