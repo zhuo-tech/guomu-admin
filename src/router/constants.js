@@ -40,13 +40,13 @@ export const constantRoutes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/dashboard',
+    redirect: '/news',
     children: [
       {
-        path: 'dashboard',
-        component: () => import('@/views/dashboard/index'),
+        path: 'news',
+        component: () => import('@/views/news/index'),
         name: 'Dashboard',
-        meta: { title: '数据看板', icon: 'dashboard', affix: true }
+        meta: { title: '资讯列表', icon: 'dashboard', affix: true }
       }
     ]
   },

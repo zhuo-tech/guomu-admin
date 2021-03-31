@@ -97,11 +97,11 @@
       </el-table-column>
     </el-table>
     <el-dialog
-      :title="form.name ? '新增' : '修改'"
+      :title="!form.name ? '新增' : '修改'"
       :visible.sync="dialogFormVisible"
     >
       <el-form ref="dataForm" :model="form" :rules="rules">
-        <el-form-item label="文章标题" label-width="100px">
+        <el-form-item label="文章标题" label-width="100px" prop="name">
           <el-input v-model="form.name" autocomplete="off" />
         </el-form-item>
       </el-form>
@@ -227,6 +227,7 @@ export default {
     },
     handleAdd() {
       // 文章添加
+      this.form.name = ''
       this.dialogFormVisible = true
     },
     /**
