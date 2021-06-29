@@ -51,7 +51,7 @@ export function mergeMap2ArrayByKeyArray(map, arr, mapKey, as) {
 
   for (const el of arr) {
     const sub_arr = el[mapKey] || []
-    const rets = sub_arr.map(s => map[s])
+    const rets = sub_arr.map(s => map[s]).filter(it => it)
     el[as] = rets
   }
 

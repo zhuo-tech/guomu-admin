@@ -40,12 +40,19 @@ module.exports = {
     proxy: {
       // detail: https://cli.vuejs.org/config/#devserver-proxy
       [process.env.VUE_APP_BASE_API]: {
-        target: `http://47.96.236.219:19010/`,
+        target: `http://guomu.zhuo-zhuo.com:19010/`,
         changeOrigin: true,
         pathRewrite: {
           ['^' + process.env.VUE_APP_BASE_API]: ''
         }
-      }
+      },
+      '/public': {
+        target: `http://guomu.zhuo-zhuo.com:19010/file/`,
+        changeOrigin: true,
+        pathRewrite: {
+          '^public': ''
+        }
+      },
     },
     disableHostCheck: true
   },
